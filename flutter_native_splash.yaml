@@ -1,4 +1,5 @@
  
+<<<<<<< HEAD
 # flutter_native_splash:
 #   color: "#ffffff"
 
@@ -8,3 +9,14 @@
 #     color: "#ffffff"
 
 #     image: assets/images/splash2.png
+=======
+flutter_native_splash:
+  color: "#ffffff"
+
+  image: assets/images/splash2.png
+
+  android_12:
+    color: "#ffffff"
+
+    image: assets/images/splash2.png
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b

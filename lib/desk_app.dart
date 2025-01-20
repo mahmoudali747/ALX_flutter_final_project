@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< HEAD
 import 'package:ibm_flutter_final_project/core/helpers/cach_helper.dart';
 import 'package:ibm_flutter_final_project/core/routing/app_router.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
@@ -19,6 +20,10 @@ String intiRoutes() {
     return Routes.loginScreen;
   }
 }
+=======
+import 'package:ibm_flutter_final_project/core/routing/app_router.dart';
+import 'package:ibm_flutter_final_project/core/routing/routes.dart';
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
 
 class DeskApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -35,7 +40,12 @@ class DeskApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
+<<<<<<< HEAD
         initialRoute: intiRoutes(), //! set your initial route
+=======
+        initialRoute: Routes.loginScreen, //! set your initial route
+
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

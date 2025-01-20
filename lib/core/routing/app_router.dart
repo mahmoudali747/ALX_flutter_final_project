@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibm_flutter_final_project/core/di/dependancy_injection.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
@@ -31,6 +32,12 @@ import 'package:ibm_flutter_final_project/features/roomScreen/ui/add_new_room.da
 import 'package:ibm_flutter_final_project/features/roomScreen/ui/admin_rooms_screen.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/logic/cubit/get_admin_work_spaces_cubit.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/logic/navigationBar/navigation_bar_cubit.dart';
+=======
+import 'package:ibm_flutter_final_project/core/routing/routes.dart';
+import 'package:ibm_flutter_final_project/features/authentication/ui/login_scren.dart';
+import 'package:ibm_flutter_final_project/features/authentication/ui/reset_password.dart';
+import 'package:ibm_flutter_final_project/features/authentication/ui/sign_up_screen.dart';
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
 import 'package:ibm_flutter_final_project/features/workspace_status/ui/workspace_status.dart';
 
 class AppRouter {
@@ -45,6 +52,27 @@ class AppRouter {
       //   return MaterialPageRoute(
       //     builder: (_) => const OnboardingScreen(),
       //   );
+      case Routes.workspaceStatus:
+        return MaterialPageRoute(
+          builder: (_) => const WorkspaceStatus(),
+        );
+
+      case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => const LoginScren(),
+        );
+      case Routes.signUp:
+        return MaterialPageRoute(
+          builder: (_) => SignUpScreen(),
+        );
+      case Routes.resetPassword:
+        return MaterialPageRoute(
+          builder: (_) => const ResetPassword(),
+        );
+      case Routes.workspaceStatus:
+        return MaterialPageRoute(
+          builder: (_) => const WorkspaceStatus(),
+        );
 
       case Routes.mainHomeScreen:
         return MaterialPageRoute(

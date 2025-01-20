@@ -12,7 +12,11 @@ class LogoWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+<<<<<<< HEAD
           SizedBox(
+=======
+          Container(
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
               width: 55.5.w,
               height: 55.5.h,
               child: SvgPicture.asset('assets/svgs/Logo.svg')),

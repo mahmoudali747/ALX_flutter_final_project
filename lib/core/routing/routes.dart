@@ -6,6 +6,7 @@ class Routes {
   static const String resetPassword = '/resetPassword';
   static const String workspaceStatus = '/WorkspaceStatus';
   static const String addNewWorkSpace = '/AddNewWorkspace';
+<<<<<<< HEAD
   static const String userScreen = '/userScreen';
   static const String editProfile = '/editProfile';
   static const String addNewRoom = '/AddNewRoom';
@@ -17,4 +18,7 @@ class Routes {
   static const String adminRoomsScreen = '/adminRoomsScreen';
   static const String bookingRoom = '/BookingRoom';
   static const String bookedDeatilsScreen = '/bookDetailsScreen';
+=======
+  
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
 }

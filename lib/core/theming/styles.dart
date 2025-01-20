@@ -8,16 +8,20 @@ class TextStyles {
       fontSize: 24.sp,
       color: Colors.black,
       fontWeight: FontWeightHelper.semiBold);
+<<<<<<< HEAD
   static TextStyle font22BlackSemiBold = TextStyle(
       fontSize: 22.sp,
       color: Colors.black,
       fontWeight: FontWeightHelper.semiBold);
   static TextStyle font22BlackBold = TextStyle(
       fontSize: 22.sp, color: Colors.black, fontWeight: FontWeightHelper.bold);
+=======
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font10WhiteRegular = TextStyle(
       fontSize: 10.sp,
       color: Colors.white,
       fontWeight: FontWeightHelper.regular);
+<<<<<<< HEAD
   static TextStyle font10WhiteBold = TextStyle(
       fontSize: 10.sp, color: Colors.white, fontWeight: FontWeightHelper.bold);
   static TextStyle font15WhiteRegular = TextStyle(
@@ -30,10 +34,15 @@ class TextStyles {
       fontSize: 16.sp,
       color: ColorsManager.mainBlack,
       fontWeight: FontWeightHelper.bold);
+=======
+  static TextStyle font16WhiteBold = TextStyle(
+      fontSize: 16.sp, color: Colors.white, fontWeight: FontWeightHelper.bold);
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font10BlueRegular = TextStyle(
       fontSize: 10.sp,
       color: ColorsManager.mainBlue,
       fontWeight: FontWeightHelper.regular);
+<<<<<<< HEAD
   static TextStyle font12LightBlueRegular = TextStyle(
       fontSize: 12.sp,
       color: ColorsManager.lightBlue,
@@ -52,6 +61,10 @@ class TextStyles {
       fontSize: 13.sp,
       color: Colors.white,
       fontWeight: FontWeightHelper.meduim);
+=======
+  static TextStyle font18WhiteBold = TextStyle(
+      fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.bold);
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font14GreyRegular = TextStyle(
       fontSize: 14.sp,
       color: Colors.grey,
@@ -59,6 +72,7 @@ class TextStyles {
   static TextStyle fonst18BlackBold = TextStyle(
       fontSize: 18.sp, color: Colors.black, fontWeight: FontWeightHelper.bold);
 
+<<<<<<< HEAD
   static TextStyle font22blackMeduim = TextStyle(
       fontSize: 20.sp,
       color: ColorsManager.semiBlack,
@@ -68,6 +82,8 @@ class TextStyles {
       color: ColorsManager.lightGrey,
       fontWeight: FontWeightHelper.bold);
 
+=======
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font35BlackMeduim = TextStyle(
       fontSize: 35.sp,
       fontWeight: FontWeightHelper.meduim,
@@ -88,22 +104,29 @@ class TextStyles {
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.regular,
       color: ColorsManager.mainPurble);
+<<<<<<< HEAD
   static TextStyle font13PurbleSemiBold = TextStyle(
       fontSize: 13.sp,
       fontWeight: FontWeightHelper.semiBold,
       color: ColorsManager.mainPurble);
+=======
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font20WhiteBold = TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeightHelper.bold,
       color: ColorsManager.mainWhite);
+<<<<<<< HEAD
   static TextStyle font15WhiteBold = TextStyle(
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.bold,
       color: ColorsManager.mainWhite);
+=======
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
   static TextStyle font24BlackBold = TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeightHelper.bold,
       color: ColorsManager.mainBlack);
+<<<<<<< HEAD
   static TextStyle font18blackbold = TextStyle(
       fontSize: 18.sp,
       color: ColorsManager.mainBlack2,
@@ -140,4 +163,6 @@ class TextStyles {
       fontSize: 16.sp,
       color: ColorsManager.lightGrey,
       fontWeight: FontWeightHelper.semiBold);
+=======
+>>>>>>> 7034fb3d3010a94d23685c8a8a0061497f1fdf0b
 }
