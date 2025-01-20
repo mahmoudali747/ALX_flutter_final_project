@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
@@ -19,34 +18,27 @@ class TextFormFieldWithLabel extends StatelessWidget {
   final Widget? prefixIcon;
   final int? minLines;
   final int? maxLines;
-  final void Function(String)? func;
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final TextInputType? inputType;
-  final List<TextInputFormatter>? textFormater;
-  final FocusNode? focusNode;
+  final TextEditingController? controller;  // Added controller
+  final String? Function(String?)? validator; // Added validator
 
-  const TextFormFieldWithLabel(
-      {super.key,
-      this.inputType,
-      this.backgroundColor,
-      this.contentPadding,
-      this.focusedBorder,
-      this.enabledBorder,
-      this.inputTextStyle,
-      this.hintText,
-      this.obscureText,
-      this.suffixIcon,
-      this.prefixIcon,
-      this.hintStyle,
-      this.label,
-      this.minLines,
-      this.maxLines,
-      this.func,
-      this.controller,
-      this.validator,
-      this.textFormater,
-      this.focusNode});
+  const TextFormFieldWithLabel({
+    super.key,
+    this.backgroundColor,
+    this.contentPadding,
+    this.focusedBorder,
+    this.enabledBorder,
+    this.inputTextStyle,
+    this.hintText,
+    this.obscureText,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.hintStyle,
+    this.label,
+    this.minLines,
+    this.maxLines,
+    this.controller,    // Added controller
+    this.validator,     // Added validator
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,19 +46,15 @@ class TextFormFieldWithLabel extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Column(
         children: [
-          if (label != null)
-            Center(
-              child: Text(
-                label!,
-                style: TextStyles.font22blackMeduim,
-              ),
+          Center(
+            child: Text(
+              label ?? "Enter text",
+              style: TextStyles.font22blackMeduim,
             ),
+          ),
           verticalSpace(5.h),
           TextFormField(
-            focusNode: focusNode,
-            controller: controller,
-            keyboardType: inputType,
-            inputFormatters: textFormater ?? [],
+            controller: controller,  // Assign controller to TextFormField
             minLines: minLines,
             maxLines: maxLines,
             obscureText: obscureText ?? false,
@@ -79,23 +67,17 @@ class TextFormFieldWithLabel extends StatelessWidget {
               hintText: hintText,
               hintStyle: hintStyle ?? TextStyles.font15GreyBold,
               isDense: true,
-              contentPadding: contentPadding ??
-                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-              focusedBorder: focusedBorder ??
-                  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: const BorderSide(
-                        color: ColorsManager.mainBlue, width: 1.3),
-                  ),
-              enabledBorder: enabledBorder ??
-                  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: const BorderSide(
-                        color: ColorsManager.semiWhite, width: 1.3),
-                  ),
+              contentPadding: contentPadding ?? EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+              focusedBorder: focusedBorder ?? OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(color: ColorsManager.mainBlue, width: 1.3),
+              ),
+              enabledBorder: enabledBorder ?? OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(color: ColorsManager.semiWhite, width: 1.3),
+              ),
             ),
-            onChanged: (value) => func?.call(value),
-            validator: validator ?? (_) => null,
+            validator: validator,  // Assign validator to TextFormField
           ),
         ],
       ),

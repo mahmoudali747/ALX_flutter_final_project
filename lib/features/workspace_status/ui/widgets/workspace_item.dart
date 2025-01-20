@@ -1,14 +1,12 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
-import 'package:ibm_flutter_final_project/features/workspace_status/data/model/work_space_model.dart';
+import 'package:ibm_flutter_final_project/features/workspace_status/data/model/in_progress_model.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/ui/widgets/workspace_details.dart';
 
 class WorkspaceItem extends StatefulWidget {
-  final WorkSpaceModel workspace;
+  final Workspace workspace;
   const WorkspaceItem({super.key, required this.workspace});
 
   @override
@@ -26,7 +24,6 @@ class _WorkspaceItemState extends State<WorkspaceItem> {
 
   @override
   Widget build(BuildContext context) {
-    log(widget.workspace.image);
     return Card(
       color: Colors.white,
       shadowColor: ColorsManager.mainBlue,
@@ -44,11 +41,10 @@ class _WorkspaceItemState extends State<WorkspaceItem> {
               width: 100.w,
               height: 120.h,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(widget.workspace.image),
-                ),
-              ), // just an example
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(
+                          'assets/images/example.png'))), // just an example
             ),
             horizantalSpace(16.w),
             Expanded(

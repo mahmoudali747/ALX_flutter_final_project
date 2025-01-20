@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
-import 'package:ibm_flutter_final_project/features/workspace_status/data/model/work_space_model.dart';
-
+import 'package:ibm_flutter_final_project/features/workspace_status/data/model/in_progress_model.dart';
 import 'workspace_button.dart';
 
 class WorkspaceDetails extends StatelessWidget {
-  final WorkSpaceModel workspace;
+  final Workspace workspace;
   final bool isAvailableActive;
   final void Function(bool) toggleAvailability;
 
@@ -23,9 +22,10 @@ class WorkspaceDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(workspace.title, style: TextStyles.fonst18BlackBold),
+        Text(workspace.name, style: TextStyles.fonst18BlackBold),
         verticalSpace(8.h),
-        Text('- ${workspace.description}', style: TextStyles.font14GreyRegular),
+        Text('- ${workspace.description}',
+            style: TextStyles.font14GreyRegular),
         verticalSpace(12.h),
         Row(
           children: [
