@@ -3,14 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/extensions.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/helpers/string_extensions.dart';
-import 'package:ibm_flutter_final_project/core/routing/routes.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_button_authentication.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_textfield.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/hyper_text.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/logo_widget.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -39,29 +37,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 LogoWidget(),
                 verticalSpace(20),
                 CustemText(
-                  text: S.of(context).sign_up,
+                  text: 'Sign Up',
                   textStyle: TextStyles.font20WhiteBold,
                 ),
                 verticalSpace(20),
                 CustemTextfield(
-                  text: S.of(context).first_name,
+                  text: 'First name',
                   icon: Icon(Icons.person),
                   textInputType: TextInputType.name,
                   Validator: (val) {
                     if (!val!.isValidName) {
-                      return S.of(context).enter_a_valid_name;
+                      return "Enter a valid name";
                     }
                     return null;
                   },
                 ),
                 verticalSpace(20),
                 CustemTextfield(
-                  text: S.of(context).last_name,
+                  text: 'Last name',
                   icon: Icon(Icons.person),
                   textInputType: TextInputType.name,
                   Validator: (val) {
                     if (!val!.isValidName) {
-                      return S.of(context).enter_a_valid_name;
+                      return "Enter a valid name";
                     }
                     return null;
                   },
@@ -70,19 +68,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustemTextfield(
                   Validator: (val) {
                     if (!val!.isValidEmail) {
-                      return S.of(context).enter_a_valid_email;
+                      return "Enter a valid email";
                     }
                     return null;
                   },
                 ),
                 verticalSpace(20),
                 CustemTextfield(
-                  text: S.of(context).password,
+                  text: 'Password',
                   obscuredText: true,
                   icon: Icon(Icons.lock),
                   Validator: (val) {
                     if (!val!.isValidPassword) {
-                      return S.of(context).enter_a_valid_password;
+                      return "Enter a valid Password";
                     }
                     return null;
                   },
@@ -91,21 +89,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 verticalSpace(10),
                 verticalSpace(20),
                 CustemTextfield(
-                  text: S.of(context).confirm_password,
+                  text: 'Confirm password',
                   obscuredText: true,
                   icon: Icon(Icons.lock),
                   textEditingController: _confirmpassword,
                   Validator: (val) {
                     if (!val!.isValidPassword &&
                         _password.text != _confirmpassword.text) {
-                      return S.of(context).its_notconfirmend;
+                      return "It's not confirmend";
                     }
                     return null;
                   },
                 ),
                 verticalSpace(30),
                 CustemButtonAuthentication(
-                  text: S.of(context).sign_up,
+                  text: 'Sign up',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}
                   },
@@ -115,14 +113,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustemText(
-                      text: S.of(context).already_have_an_account,
+                      text: 'Already have an account?',
                       textStyle: TextStyles.font15BlackRegular,
                     ),
                     HyperText(
-                      text: S.of(context).sign_in,
+                      text: 'Sign In',
                       textStyle: TextStyles.font15PurbleRegular,
                       onPressed: () {
-                        context.pushNamed(Routes.loginScreen);
+                        context.pushNamed('/loginScreen');
                       },
                     )
                   ],

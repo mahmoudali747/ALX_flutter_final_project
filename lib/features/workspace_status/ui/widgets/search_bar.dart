@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class SearchingBar extends StatelessWidget {
   const SearchingBar({super.key});
@@ -19,7 +18,7 @@ class SearchingBar extends StatelessWidget {
         child: TextFormField(
           decoration: InputDecoration(
             border: InputBorder.none, // Remove underline
-            hintText: "${S.of(context).search}...",
+            hintText: "Search...",
             prefixIcon: SvgPicture.asset(
               'assets/svgs/search.svg',
               width: 5.w,

@@ -3,14 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/extensions.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/helpers/string_extensions.dart';
-import 'package:ibm_flutter_final_project/core/routing/routes.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_button_authentication.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_textfield.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/hyper_text.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/logo_widget.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -36,26 +34,26 @@ class _LoginScrenState extends State<LoginScren> {
                 const LogoWidget(),
                 verticalSpace(20),
                 CustemText(
-                  text: S.of(context).sign_in,
+                  text: 'Sign in',
                   textStyle: TextStyles.font20WhiteBold,
                 ),
                 verticalSpace(20),
                 CustemTextfield(
                   Validator: (val) {
                     if (!val!.isValidEmail) {
-                      return S().enter_a_valid_email;
+                      return "Enter a valid email";
                     }
                     return null;
                   },
                 ),
                 verticalSpace(20),
                 CustemTextfield(
-                  text: S.of(context).password,
+                  text: 'Password',
                   obscuredText: true,
                   icon: const Icon(Icons.lock),
                   Validator: (val) {
                     if (!val!.isValidPassword) {
-                      return S.of(context).enter_a_valid_password;
+                      return "Enter a valid Password";
                     }
                     return null;
                   },
@@ -64,9 +62,9 @@ class _LoginScrenState extends State<LoginScren> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: HyperText(
-                    text: S.of(context).forgot_password,
+                    text: 'Forgot Password?',
                     onPressed: () {
-                      context.pushNamed(Routes.resetPassword);
+                      context.pushNamed('/resetPassword');
                     },
                   ),
                 ),
@@ -81,14 +79,14 @@ class _LoginScrenState extends State<LoginScren> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustemText(
-                      text: S.of(context).dont_have_an_account,
+                      text: 'Don’t have an account?',
                       textStyle: TextStyles.font15BlackRegular,
                     ),
                     HyperText(
-                      text: S.of(context).sign_up,
+                      text: 'Sign Up',
                       textStyle: TextStyles.font15PurbleRegular,
                       onPressed: () {
-                        context.pushNamed(Routes.signUp);
+                        context.pushNamed('/signUp');
                       },
                     )
                   ],

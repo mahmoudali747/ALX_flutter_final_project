@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
-import 'package:ibm_flutter_final_project/features/User/ui/User_screen.dart';
-import 'package:ibm_flutter_final_project/features/User/ui/edit_profile_screen.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/login_scren.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/reset_password.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/sign_up_screen.dart';
@@ -39,14 +37,6 @@ class AppRouter {
       case Routes.workspaceStatus:
         return MaterialPageRoute(
           builder: (_) => const WorkspaceStatus(),
-        );
-      case Routes.userScreen:
-        return MaterialPageRoute(
-          builder: (_) => const UserScreen(),
-        );
-      case Routes.editProfile:
-        return MaterialPageRoute(
-          builder: (_) => const EditProfileScreen(),
         );
 
       default:

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class CustemButtonAuthentication extends StatelessWidget {
   final String? text;
@@ -35,7 +34,7 @@ class CustemButtonAuthentication extends StatelessWidget {
               width: 75.w,
             ),
             CustemText(
-              text: text ?? S.of(context).sign_in,
+              text: text ?? 'Sign in',
               textStyle: TextStyles.font20WhiteBold,
             ),
             Container(

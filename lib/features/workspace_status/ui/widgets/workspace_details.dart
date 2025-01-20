@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/data/model/in_progress_model.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 import 'workspace_button.dart';
 
 class WorkspaceDetails extends StatelessWidget {
@@ -25,18 +24,19 @@ class WorkspaceDetails extends StatelessWidget {
       children: [
         Text(workspace.name, style: TextStyles.fonst18BlackBold),
         verticalSpace(8.h),
-        Text('- ${workspace.description}', style: TextStyles.font14GreyRegular),
+        Text('- ${workspace.description}',
+            style: TextStyles.font14GreyRegular),
         verticalSpace(12.h),
         Row(
           children: [
             WorkspaceButton(
-              label: S.of(context).available,
+              label: "Available",
               isActive: isAvailableActive,
               onTap: () => toggleAvailability(true),
             ),
             horizantalSpace(8.w),
             WorkspaceButton(
-              label: S.of(context).hide,
+              label: "Hide",
               isActive: !isAvailableActive,
               onTap: () => toggleAvailability(false),
             ),

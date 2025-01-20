@@ -8,7 +8,6 @@ import 'package:ibm_flutter_final_project/core/widgets/app_text_button.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/data/model/in_progress_model.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/ui/widgets/search_bar.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/ui/widgets/workspace_item.dart';
-import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class WorkspaceStatus extends StatelessWidget {
   const WorkspaceStatus({super.key});
@@ -35,8 +34,7 @@ class WorkspaceStatus extends StatelessWidget {
       appBar: AppBar(
         leading: const Icon(Icons.arrow_back_rounded),
         backgroundColor: Colors.white,
-        title:
-            Text(S.of(context).search, style: TextStyle(color: Colors.black)),
+        title: const Text("Search", style: TextStyle(color: Colors.black)),
       ),
       body: SafeArea(
         child: Column(
@@ -47,8 +45,7 @@ class WorkspaceStatus extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(S.of(context).workspaces,
-                        style: TextStyles.font24BlackSemiBold),
+                    Text("  Workspaces", style: TextStyles.font24BlackSemiBold),
                     ...workspaces.values
                         .map((workspace) => WorkspaceItem(workspace: workspace))
                         .toList(),
@@ -56,7 +53,7 @@ class WorkspaceStatus extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30.w),
                       child: AppTextButton(
-                        buttonText: S.of(context).add_new_workspace,
+                        buttonText: "Add New Workspace",
                         buttonStyle: TextStyles.font16WhiteBold,
                         onPress: () {
                           context.pushNamed(Routes.addNewWorkSpace);
