@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/features/User/ui/widgets/custem_user_row.dart';
+import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class CustemContainerWidget extends StatelessWidget {
   const CustemContainerWidget({super.key});
@@ -12,7 +13,7 @@ class CustemContainerWidget extends StatelessWidget {
       width: 375.w,
       height: 420.h,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
         color: ColorsManager.mainWhite,
         border: Border.all(
           color: ColorsManager.mainGrey,
@@ -24,20 +25,20 @@ class CustemContainerWidget extends StatelessWidget {
             horizontal: 20.w, vertical: 16.h), // Adjust padding
         child: Column(
           children: [
-            const CustemUserRow(), // Default row
+            CustemUserRow(), // Default row
             SizedBox(height: 25.h), // Vertical space
-            const CustemUserRow(
-              text: 'Settings',
+            CustemUserRow(
+              text: S.of(context).settings,
               image: 'assets/images/settings.png',
             ),
             SizedBox(height: 25.h),
-            const CustemUserRow(
-              text: 'Change password',
+            CustemUserRow(
+              text: S.of(context).forgot_password,
               image: 'assets/images/loack.png',
             ),
             SizedBox(height: 25.h),
-            const CustemUserRow(
-              text: 'About',
+            CustemUserRow(
+              text: S.of(context).about,
               image: 'assets/images/about.png',
             ),
           ],

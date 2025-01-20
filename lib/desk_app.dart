@@ -1,24 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ibm_flutter_final_project/core/helpers/cach_helper.dart';
 import 'package:ibm_flutter_final_project/core/routing/app_router.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
-import 'package:ibm_flutter_final_project/features/authentication/data/repos/signup_repo.dart';
-
-String intiRoutes() {
-  String? loginAs =
-      CacheHelper.sharedPreferences.getString(cacheHelperString.role);
-  log("$loginAs");
-  if (loginAs == "admin") {
-    return Routes.workspaceStatus;
-  } else if (loginAs == "client") {
-    return Routes.mainHomeScreen;
-  } else {
-    return Routes.loginScreen;
-  }
-}
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
 
 class DeskApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -30,12 +15,21 @@ class DeskApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
+        locale: Locale('ar'),
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
         title: 'Doc app',
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: intiRoutes(), //! set your initial route
+        initialRoute: Routes.workspaceStatus, //! set your initial route
+
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

@@ -5,6 +5,7 @@ import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/cus
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_textfield.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/logo_widget.dart';
+import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -20,12 +21,11 @@ class ResetPassword extends StatelessWidget {
             LogoWidget(),
             verticalSpace(30),
             CustemText(
-              text: 'Resset Password',
+              text: S.of(context).reset_password,
               textStyle: TextStyles.font24BlackBold,
             ),
             CustemText(
-              text:
-                  'Please enter your email address to request a password reset',
+              text: S.of(context).enter_email_for_reset,
               textStyle: TextStyles.font15BlackRegular,
             ),
             verticalSpace(30),
@@ -34,7 +34,7 @@ class ResetPassword extends StatelessWidget {
             ),
             verticalSpace(30),
             CustemButtonAuthentication(
-              text: 'Send',
+              text: S.of(context).send,
             ),
           ],
         ),

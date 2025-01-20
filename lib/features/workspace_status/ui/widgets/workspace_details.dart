@@ -1,19 +1,13 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ibm_flutter_final_project/core/di/dependancy_injection.dart';
-import 'package:ibm_flutter_final_project/core/helpers/extensions.dart';
 import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
-import 'package:ibm_flutter_final_project/core/routing/routes.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
-import 'package:ibm_flutter_final_project/features/roomScreen/logic/getAdminRoomsCubit/admin_rooms_cubit.dart';
-import 'package:ibm_flutter_final_project/features/workspace_status/data/model/work_space_model.dart';
-
+import 'package:ibm_flutter_final_project/features/workspace_status/data/model/in_progress_model.dart';
+import 'package:ibm_flutter_final_project/generated/l10n.dart';
 import 'workspace_button.dart';
 
 class WorkspaceDetails extends StatelessWidget {
-  final WorkSpaceModel workspace;
+  final Workspace workspace;
   final bool isAvailableActive;
   final void Function(bool) toggleAvailability;
 
@@ -26,35 +20,25 @@ class WorkspaceDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = getIt<AdminRoomsCubit>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(workspace.title, style: TextStyles.fonst18BlackBold),
+        Text(workspace.name, style: TextStyles.fonst18BlackBold),
         verticalSpace(8.h),
         Text('- ${workspace.description}', style: TextStyles.font14GreyRegular),
         verticalSpace(12.h),
         Row(
           children: [
             WorkspaceButton(
-              label: "edit rooms",
+              label: S.of(context).available,
               isActive: isAvailableActive,
-              onTap: () async {
-                log("enter cubit");
-                await cubit.fetchRooms(workspace.id);
-
-                context.pushNamed(Routes.adminRoomsScreen,
-                    arguments: workspace);
-              },
+              onTap: () => toggleAvailability(true),
             ),
             horizantalSpace(8.w),
             WorkspaceButton(
-              
-              label: "edit workSpace",
-              isActive: isAvailableActive,
-              onTap: () {
-                context.pushNamed(Routes.addNewWorkSpace, arguments: workspace);
-              },
+              label: S.of(context).hide,
+              isActive: !isAvailableActive,
+              onTap: () => toggleAvailability(false),
             ),
           ],
         ),

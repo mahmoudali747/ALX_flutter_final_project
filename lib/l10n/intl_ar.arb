@@ -1,0 +1,32 @@
+{
+    "sign_in": "تسجيل الدخول",
+    "sign_up": "إنشاء حساب",
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "enter_a_valid_email": "أدخل بريدًا إلكترونيًا صالحًا",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "enter_a_valid_password": "أدخل كلمة مرور صالحة",
+    "enter_a_valid_name": "أدخل اسمًا صالحًا",
+    "forgot_password": "هل نسيت كلمة المرور؟",
+    "dont_have_an_account": "لا تملك حسابًا؟",
+    "already_have_an_account": "هل لديك حساب بالفعل؟",
+    "verification": "التحقق",
+    "your_phone_number": "رقم هاتفك",
+    "update" : "تحديث",
+    "reset_password": "إعادة تعيين كلمة المرور",
+    "settings": "الإعدادات",
+    "about": "حول",
+    "its_not_confirmed": "لم يتم التأكيد",
+    "edit_profile": "تعديل الملف الشخصي",
+    "enter_email_for_reset": "يرجى إدخال عنوان بريدك الإلكتروني لطلب إعادة تعيين كلمة المرور",
+    "send": "إرسال",
+    "search": "بحث",
+    "workspaces": "  مساحات العمل",
+    "add_new_workspace": "إضافة مساحة عمل جديدة",
+    "available": "متاح",
+    "hide": "إخفاء"
+
+
+
+}

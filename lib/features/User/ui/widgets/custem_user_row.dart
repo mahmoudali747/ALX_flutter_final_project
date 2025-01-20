@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ibm_flutter_final_project/core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class CustemUserRow extends StatelessWidget {
   final String? text;
@@ -37,7 +39,7 @@ class CustemUserRow extends StatelessWidget {
           SizedBox(width: 16.w), // Space between image and text
           Expanded(
             child: CustemText(
-              text: text ?? 'Verification',
+              text: text ?? S.of(context).verification,
               textStyle: TextStyles.font24Black5Meduim,
             ),
           ),

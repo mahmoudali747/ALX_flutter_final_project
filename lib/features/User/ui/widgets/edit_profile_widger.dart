@@ -5,6 +5,7 @@ import 'package:ibm_flutter_final_project/core/routing/routes.dart';
 import 'package:ibm_flutter_final_project/core/theming/colors.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
 import 'package:ibm_flutter_final_project/features/authentication/ui/widgets/custem_text_widget.dart';
+import 'package:ibm_flutter_final_project/generated/l10n.dart';
 
 class EditProfileWidger extends StatelessWidget {
   const EditProfileWidger({super.key});
@@ -22,9 +23,9 @@ class EditProfileWidger extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
             border: Border.all(color: ColorsManager.mainGrey),
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         child: CustemText(
-          text: 'Edit profile',
+          text: S.of(context).edit_profile,
           textStyle: TextStyles.font15BlackRegular,
         ),
       ),
