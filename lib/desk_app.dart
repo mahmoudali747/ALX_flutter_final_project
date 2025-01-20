@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibm_flutter_final_project/core/routing/app_router.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
+import 'package:ibm_flutter_final_project/core/theming/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DeskApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -18,8 +19,8 @@ class DeskApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: Routes.loginScreen, //! set your initial route
-
+        // initialRoute: ,//! set your initial route
+        initialRoute: Routes.addNewWorkSpace,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

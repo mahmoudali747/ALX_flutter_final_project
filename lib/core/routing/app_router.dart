@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibm_flutter_final_project/core/routing/routes.dart';
-import 'package:ibm_flutter_final_project/features/authentication/ui/login_scren.dart';
-import 'package:ibm_flutter_final_project/features/authentication/ui/reset_password.dart';
-import 'package:ibm_flutter_final_project/features/authentication/ui/sign_up_screen.dart';
+import 'package:ibm_flutter_final_project/features/add_new_workspace/ui/add_new_worksapce.dart';
 import 'package:ibm_flutter_final_project/features/workspace_status/ui/workspace_status.dart';
 
 class AppRouter {
@@ -19,24 +17,10 @@ class AppRouter {
       //   );
       case Routes.workspaceStatus:
         return MaterialPageRoute(
-          builder: (_) => const WorkspaceStatus(),
-        );
-
-      case Routes.loginScreen:
+          builder: (_) => WorkspaceStatus(),
+        );     case Routes.addNewWorkSpace:
         return MaterialPageRoute(
-          builder: (_) => const LoginScren(),
-        );
-      case Routes.signUp:
-        return MaterialPageRoute(
-          builder: (_) => SignUpScreen(),
-        );
-      case Routes.resetPassword:
-        return MaterialPageRoute(
-          builder: (_) => const ResetPassword(),
-        );
-      case Routes.workspaceStatus:
-        return MaterialPageRoute(
-          builder: (_) => const WorkspaceStatus(),
+          builder: (_) => AddNewWorkspace(),
         );
 
       default:
