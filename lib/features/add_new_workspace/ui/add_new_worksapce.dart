@@ -1,15 +1,24 @@
-import 'dart:io';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ibm_flutter_final_project/core/di/dependancy_injection.dart';
+import 'package:ibm_flutter_final_project/core/helpers/cach_helper.dart';
+import 'package:ibm_flutter_final_project/core/helpers/extensions.dart';
+import 'package:ibm_flutter_final_project/core/routing/routes.dart';
 import 'package:ibm_flutter_final_project/core/theming/styles.dart';
-import 'package:ibm_flutter_final_project/features/add_new_workspace/ui/widgets/image_picker.dart';
-import '../../../../core/helpers/spacing.dart';
 import 'package:ibm_flutter_final_project/core/widgets/app_text_button.dart';
-import 'package:ibm_flutter_final_project/features/add_new_workspace/ui/widgets/location_picker.dart';
+import 'package:ibm_flutter_final_project/features/add_new_workspace/logic/AddNewWorkSpaceCubit/add_new_work_space_cubit.dart';
+import 'package:ibm_flutter_final_project/features/add_new_workspace/ui/widgets/image_picker.dart';
 import 'package:ibm_flutter_final_project/features/add_new_workspace/ui/widgets/textfield_with_label.dart';
+import 'package:ibm_flutter_final_project/features/authentication/data/repos/signup_repo.dart';
+import 'package:latlong2/latlong.dart';
+
+import '../../../../core/helpers/spacing.dart';
 
 class AddNewWorkspace extends StatefulWidget {
   const AddNewWorkspace({super.key});
+
 
   @override
   _AddNewWorkspaceState createState() => _AddNewWorkspaceState();
@@ -18,20 +27,43 @@ class AddNewWorkspace extends StatefulWidget {
 class _AddNewWorkspaceState extends State<AddNewWorkspace> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // Controllers to capture the form values
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-
   // Variables to track if image and location are picked
-  File? _pickedImage;
-  bool _isImagePicked = false;
 
   @override
   Widget build(BuildContext context) {
+     LatLng extractCoordinatesFromUrl(String url) {
+    final uri = Uri.parse(url);
+
+    if (uri.pathSegments.isNotEmpty && url.contains('@')) {
+      final coordinates = url.split('@')[1].split(',');
+      final lat = double.parse(coordinates[0]);
+      final lng = double.parse(coordinates[1]);
+      return LatLng(lat, lng);
+    } else {
+      throw Exception("Invalid Google Maps URL");
+    }
+  }
+  
+    final cubit = getIt<AddNewWorkSpaceCubit>();
+
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () {
+              CacheHelper.sharedPreferences
+                  .remove(cacheHelperString.accessToken);
+              CacheHelper.sharedPreferences
+                  .remove(cacheHelperString.refreshToken);
+              CacheHelper.sharedPreferences.remove(cacheHelperString.email);
+              CacheHelper.sharedPreferences.remove(cacheHelperString.image);
+              CacheHelper.sharedPreferences.remove(cacheHelperString.fName);
+              CacheHelper.sharedPreferences.remove(cacheHelperString.lName);
+              CacheHelper.sharedPreferences.remove(cacheHelperString.role);
+              context.pushReplacementNamed(Routes.loginScreen);
+            },
+            child: const Icon(Icons.arrow_back)),
         backgroundColor: Colors.white,
-        title: const Text("New  "),
+        title: const Text("New "),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,9 +76,11 @@ class _AddNewWorkspaceState extends State<AddNewWorkspace> {
                 children: [
                   // Title Field
                   TextFormFieldWithLabel(
-                    controller: _titleController,
                     label: "Title",
                     hintText: "Title",
+                    func: (value) {
+                      cubit.titleChange(value);
+                    },
                     hintStyle: TextStyles.font14GreyRegular,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -61,9 +95,11 @@ class _AddNewWorkspaceState extends State<AddNewWorkspace> {
 
                   // Description Field
                   TextFormFieldWithLabel(
-                    controller: _descriptionController,
                     label: "Description",
                     hintText: "Enter workspace description",
+                    func: (value) {
+                      cubit.descriptionChange(value);
+                    },
                     hintStyle: TextStyles.font14GreyRegular,
                     minLines: 3,
                     maxLines: 5,
@@ -77,27 +113,11 @@ class _AddNewWorkspaceState extends State<AddNewWorkspace> {
                     },
                   ),
                   verticalSpace(10.h),
-
-                  // Image Picker Widget (Use the custom widget)
-                  ImagePicker(
-                    onImagePicked: (File? image) {
-                      if (image == null) {
-                        print("No image was selected.");
-                      } else {
-                        print("Image picked: ${image.path}");
-                      }
-                      setState(() {
-                        _pickedImage = image;
-                        _isImagePicked = image != null;
-                      });
-                    },
-                  ),
-                  verticalSpace(8.h),
-
+                  const ImagePickerWidget(),
                   // Location Picker Widget
-                  LocationPickerWidget(onLocationPicked: (location) {
-                    // Handle location picked
-                  }),
+                  // LocationPickerWidget(onLocationPicked: (location) {
+                  // // Handle location picked
+                  // }),
                   verticalSpace(20.h),
 
                   // Create New Workspace Button
@@ -108,21 +128,21 @@ class _AddNewWorkspaceState extends State<AddNewWorkspace> {
                       buttonStyle: TextStyles.font16WhiteBold,
                       onPress: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                          if (!_isImagePicked) {
+                          if (cubit.state.imageFile == null) {
                             // If no image is picked, show a warning
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please pick an image')),
+                              const SnackBar(
+                                  content: Text('Please pick an image')),
                             );
                             return;
                           }
 
                           // If form is valid and image is picked, submit data
-                          String title = _titleController.text;
-                          String description = _descriptionController.text;
-                          print('Workspace created: $title, $description');
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Please fill out all fields correctly')),
+                            const SnackBar(
+                                content: Text(
+                                    'Please fill out all fields correctly')),
                           );
                         }
                       },
@@ -136,4 +156,5 @@ class _AddNewWorkspaceState extends State<AddNewWorkspace> {
       ),
     );
   }
+
 }
